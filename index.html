@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav  class="navbar">
+    <nav class="navbar">
         <div class="nav_left">
             <a href="#home">
                 <img src="assets/images/Logo.png" alt="ReBloom Logo" class="logo_img">
@@ -23,21 +23,21 @@
         </div>
         
         <ul class="nav_mid">
-            <li><a href="#home" class="nav_link active">Home</a></li>
-            <li><a href="#about" class="nav_link">About</a></li>
-            <li><a href="#products" class="nav_link">Product</a></li>
-            <li><a href="#faq" class="nav_link">FAQ</a></li>
-            <li><a href="#contact" class="nav_link">Contact</a></li>
+            <li><a href="#home" class="nav_link active" data-i18n="nav_home">Home</a></li>
+            <li><a href="#about" class="nav_link" data-i18n="nav_about">About</a></li>
+            <li><a href="#products" class="nav_link" data-i18n="nav_products">Product</a></li>
+            <li><a href="#faq" class="nav_link" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="#contact" class="nav_link" data-i18n="nav_contact">Contact</a></li>
         </ul>
         
         <div class="nav_right">
             <div class="lang_switch">
-                <button type="button" class="lang_btn active">IDN</button>
-                <button type="button" class="lang_btn">ENG</button>
+                <button type="button" class="lang_btn" data-lang="IDN">IDN</button>
+                <button type="button" class="lang_btn active" data-lang="ENG">ENG</button>
             </div>
             <a href="receipt.html" class="btn_cart" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping cart_icon"></i>
-              <span>Cart</span>
+              <span data-i18n="nav_cart">Cart</span>
             </a>
         </div>
     </nav>
@@ -50,8 +50,8 @@
             </div>
             <div class="hero_grid">
                 <div class="hero_left">
-                    <h2 class="hero_sub_title">Turning Waste Into<br>Something Beautiful</h2>
-                    <p class="hero_desc">
+                    <h2 class="hero_sub_title" data-i18n="hero_subtitle">Turning Waste Into<br>Something Beautiful</h2>
+                    <p class="hero_desc" data-i18n="hero_desc">
                         ReBloom creates beautiful handmade flower vases and bouquets from recycled plastic, combining elegance, sustainability, and creative craftsmanship.
                     </p>
                 </div>
@@ -61,8 +61,8 @@
                 </div>
                 
                 <div class="hero_right">
-                    <a href="#products" class="btn btn_primary hero_cta_btn">See Our Products</a>
-                    <p class="hero_desc right_desc">
+                    <a href="#products" class="btn btn_primary hero_cta_btn" data-i18n="hero_cta">See Our Products</a>
+                    <p class="hero_desc right_desc" data-i18n="hero_cta_sub">
                         Get one for Limited Time Pack now!
                     </p>
                 </div>
@@ -77,7 +77,7 @@
                     <div class="feat_icon">
                         <i class="fa-solid fa-recycle"></i>
                     </div>
-                    <span class="feat_txt">Environmentally friendly</span>
+                    <span class="feat_txt" data-i18n="feat_eco">Environmentally friendly</span>
                 </div>
                 
                 <div class="feat_divider"></div>
@@ -86,7 +86,7 @@
                     <div class="feat_icon">
                         <i class="fa-solid fa-hand-holding-heart"></i>
                     </div>
-                    <span class="feat_txt">Hand Made</span>
+                    <span class="feat_txt" data-i18n="feat_handmade">Hand Made</span>
                 </div>
                 
                 <div class="feat_divider"></div>
@@ -95,7 +95,7 @@
                     <div class="feat_icon">
                         <i class="fa-solid fa-money-bill-wave"></i>
                     </div>
-                    <span class="feat_txt">Affordable prices</span>
+                    <span class="feat_txt" data-i18n="feat_affordable">Affordable prices</span>
                 </div>
                 
                 <div class="feat_divider"></div>
@@ -104,7 +104,7 @@
                     <div class="feat_icon">
                         <i class="fa-solid fa-gift"></i>
                     </div>
-                    <span class="feat_txt">Suitable as a gift</span>
+                    <span class="feat_txt" data-i18n="feat_gift">Suitable as a gift</span>
                 </div>
             </div>
         </div>
@@ -119,17 +119,17 @@
             
             <div class="vm">
                 <div class="vm_block">
-                    <h3 class="vm_title">OUR VISION</h3>
-                    <p class="vm_txt">To create beautiful and unique handmade products while promoting creativity and environmental awareness.</p>
+                    <h3 class="vm_title" data-i18n="vision_title">OUR VISION</h3>
+                    <p class="vm_txt" data-i18n="vision_desc">To create beautiful and unique handmade products while promoting creativity and environmental awareness.</p>
                 </div>
                 
                 <div class="vm_block">
-                    <h3 class="vm_title">OUR MISION</h3>
+                    <h3 class="vm_title" data-i18n="mission_title">OUR MISION</h3>
                     <ol class="vm_list">
-                        <li>Reuse plastic waste into useful products.</li>
-                        <li>Create unique and creative handmade designs.</li>
-                        <li>Provide quality products made with care.</li>
-                        <li>Encourage people to care for the environment through creativity.</li>
+                        <li data-i18n="mission_item_1">Reuse plastic waste into useful products.</li>
+                        <li data-i18n="mission_item_2">Create unique and creative handmade designs.</li>
+                        <li data-i18n="mission_item_3">Provide quality products made with care.</li>
+                        <li data-i18n="mission_item_4">Encourage people to care for the environment through creativity.</li>
                     </ol>
                 </div>
             </div>
@@ -139,8 +139,8 @@
     <section class="about_sec" id="about">
         <div class="container about_box">
             <div class="about">
-                <h2 class="about_title">OUR <span class="hl_red">ORIGIN</span></h2>
-                <p class="about_txt">
+                <h2 class="about_title" data-i18n="origin_title">OUR <span class="hl_red">ORIGIN</span></h2>
+                <p class="about_txt" data-i18n="origin_desc">
                     We create beautiful handmade flower vases from recycled plastic, turning simple materials into unique and creative decorations. Each piece is carefully handcrafted with love and creativity while helping reduce plastic waste.
                 </p>
             </div>
@@ -157,29 +157,29 @@
     <section class="why_sec">
         <div class="container">
             <div class="why_header">
-                <h2 class="why_heading">Why Choose Us</h2>
+                <h2 class="why_heading" data-i18n="why_title">Why Choose Us</h2>
                 <div class="why_underline"></div>
             </div>
             
             <div class="why_grid">
                 <div class="why_item">
                     <span class="why_num">01.</span>
-                    <p class="why_txt">Transforming waste plastic into beautiful, aesthetic products to help environment.</p>
+                    <p class="why_txt" data-i18n="why_item_1">Transforming waste plastic into beautiful, aesthetic products to help environment.</p>
                 </div>
                 
                 <div class="why_item">
                     <span class="why_num">03.</span>
-                    <p class="why_txt">Our products are suitable as gifts for loved ones on various occasions.</p>
+                    <p class="why_txt" data-i18n="why_item_3">Our products are suitable as gifts for loved ones on various occasions.</p>
                 </div>
                 
                 <div class="why_item">
                     <span class="why_num">02.</span>
-                    <p class="why_txt">Each flower and vase is crafted with creativity and exceptional touch, giving it a unique character.</p>
+                    <p class="why_txt" data-i18n="why_item_2">Each flower and vase is crafted with creativity and exceptional touch, giving it a unique character.</p>
                 </div>
                 
                 <div class="why_item">
                     <span class="why_num">04.</span>
-                    <p class="why_txt">Get unique handmade products at prices that won't break the bank.</p>
+                    <p class="why_txt" data-i18n="why_item_4">Get unique handmade products at prices that won't break the bank.</p>
                 </div>
             </div>
         </div>
@@ -187,7 +187,7 @@
 
     <section class="prod_sec" id="products">
         <div class="container">
-            <h2 class="prod_heading">Explore More Into Our <span class="hl_red">Products</span></h2>
+            <h2 class="prod_heading" data-i18n="products_title">Explore More Into Our <span class="hl_red">Products</span></h2>
             
             <div class="prod_grid">
                 <div class="prod_card">
@@ -196,17 +196,17 @@
                             <i class="fa-solid fa-spa"></i>
                         </div>
                     </div>
-                    <h3 class="prod_title">Flower Pot Regular</h3>
-                    <p class="prod_sub">Bring beauty and a warm atmosphere into your space with our signature handcrafted recycled plastic floral pot. Select and request your preferred flower and pot colors.</p>
+                    <h3 class="prod_title" data-i18n="prod_1_title">Flower Pot Regular</h3>
+                    <p class="prod_sub" data-i18n="prod_1_desc">Bring beauty and a warm atmosphere into your space with our signature handcrafted recycled plastic floral pot. Select and request your preferred flower and pot colors.</p>
                     <ul class="prod_feats">
-                        <li><i class="fa-solid fa-check"></i> Premium Quality Materials</li>
-                        <li><i class="fa-solid fa-check"></i> Request Any Color You Love For Flower</li>
-                        <li><i class="fa-solid fa-check"></i> Affordable Prices</li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_quality">Premium Quality Materials</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_color">Request Any Color You Love For Flower</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_price">Affordable Prices</span></li>
                     </ul>
                     <div class="prod_price">
-                        Rp 10.000,00 <span>/ pcs</span>
+                        Rp 10.000,00 <span data-i18n="prod_pack_suffix">/ pack</span>
                     </div>
-                    <a href="product.html" class="btn btn_primary prod_btn">Order Product</a>
+                    <a href="product.html" class="btn btn_primary prod_btn" data-i18n="prod_order_btn">Order Product</a>
                 </div>
 
                 <div class="prod_card">
@@ -215,18 +215,18 @@
                             <i class="fa-solid fa-seedling"></i>
                         </div>
                     </div>
-                    <h3 class="prod_title">Flower Bird Gift</h3>
-                    <p class="prod_sub">A charming handcrafted recycled floral arrangement paired with a custom Birthday Card & Envelope—perfect for gifting to someone special.</p>
+                    <h3 class="prod_title" data-i18n="prod_2_title">Flower Bird Gift</h3>
+                    <p class="prod_sub" data-i18n="prod_2_desc">A charming handcrafted recycled floral arrangement paired with a custom Birthday Card & Envelope—perfect for gifting to someone special.</p>
                     <ul class="prod_feats">
-                        <li><i class="fa-solid fa-check"></i> Premium Quality Materials</li>
-                        <li><i class="fa-solid fa-check"></i> Request Any Color You Love For Flower</li>
-                        <li><i class="fa-solid fa-check"></i> Affordable Prices</li>
-                        <li><i class="fa-solid fa-check"></i> <span>Birthday Card & Envelope</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_quality">Premium Quality Materials</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_color">Request Any Color You Love For Flower</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_price">Affordable Prices</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_card">Birthday Card & Envelope</span></li>
                     </ul>
                     <div class="prod_price">
-                        Rp 12.000,00 <span>/ pcs</span>
+                        Rp 12.000,00 <span data-i18n="prod_pack_suffix">/ pack</span>
                     </div>
-                    <a href="product_2.html" class="btn btn_primary prod_btn">Order Product</a>
+                    <a href="product_2.html" class="btn btn_primary prod_btn" data-i18n="prod_order_btn">Order Product</a>
                 </div>
 
                 <div class="prod_card">
@@ -235,18 +235,18 @@
                             <i class="fa-solid fa-gift"></i>
                         </div>
                     </div>
-                    <h3 class="prod_title">Lamp Flower Pot</h3>
-                    <p class="prod_sub">Illuminate your room with our handcrafted recycled floral vase enhanced with warm, cute LED fairy lights and custom petal colors.</p>
+                    <h3 class="prod_title" data-i18n="prod_3_title">Lamp Flower Pot</h3>
+                    <p class="prod_sub" data-i18n="prod_3_desc">Illuminate your room with our handcrafted recycled floral vase enhanced with warm, cute LED fairy lights and custom petal colors.</p>
                     <ul class="prod_feats">
-                        <li><i class="fa-solid fa-check"></i> Premium Quality Materials</li>
-                        <li><i class="fa-solid fa-check"></i> Request Any Color You Love For Flower</li>
-                        <li><i class="fa-solid fa-check"></i> Affordable Prices</li>
-                        <li><i class="fa-solid fa-check"></i> <span>Cute LED Lights</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_quality">Premium Quality Materials</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_color">Request Any Color You Love For Flower</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_price">Affordable Prices</span></li>
+                        <li><i class="fa-solid fa-check"></i> <span data-i18n="prod_feat_led">Cute LED Lights</span></li>
                     </ul>
                     <div class="prod_price">
-                        Rp 15.000,00 <span>/ pcs</span>
+                        Rp 15.000,00 <span data-i18n="prod_pack_suffix">/ pack</span>
                     </div>
-                    <a href="product_3.html" class="btn btn_primary prod_btn">Order Product</a>
+                    <a href="product_3.html" class="btn btn_primary prod_btn" data-i18n="prod_order_btn">Order Product</a>
                 </div>
             </div>
         </div>
@@ -254,47 +254,47 @@
 
     <section class="faq_sec" id="faq">
         <div class="container">
-            <h2 class="faq_heading"><span class="hl_red">Questions</span> Asked By<br>Our Customers</h2>
-            <p class="faq_sub">A lot of people have been asking us about this and that, please read to find the same issues below.</p>
+            <h2 class="faq_heading" data-i18n="faq_title"><span class="hl_red">Questions</span> Asked By<br>Our Customers</h2>
+            <p class="faq_sub" data-i18n="faq_desc">A lot of people have been asking us about this and that, please read to find the same issues below.</p>
             
             <div class="faq_box">
                 <div class="faq_item active">
                     <div class="faq_q">
-                        <span>What payment methods do you accept?</span>
+                        <span data-i18n="faq_q_1">What payment methods do you accept?</span>
                         <i class="fa-solid fa-chevron-up faq_icon"></i>
                     </div>
                     <div class="faq_a">
-                        <p>ReBloom operates exclusively through Pre-Order and Cash on Delivery (COD) / Cash Only. All orders are handcrafted with care and confirmed directly with our admin via WhatsApp upon checkout.</p>
+                        <p data-i18n="faq_a_1">ReBloom operates exclusively through Pre-Order and Cash on Delivery (COD) / Cash Only. All orders are handcrafted with care and confirmed directly with our admin via WhatsApp upon checkout.</p>
                     </div>
                 </div>
 
                 <div class="faq_item">
                     <div class="faq_q">
-                        <span>Can I request the color of the flower and pot?</span>
+                        <span data-i18n="faq_q_2">Can I request the color of the flower and pot?</span>
                         <i class="fa-solid fa-chevron-right faq_icon"></i>
                     </div>
                     <div class="faq_a">
-                        <p>Unfortunately, we only offer four custom color palettes for the flower petals.</p>
+                        <p data-i18n="faq_a_2">Unfortunately, we only offer four custom color palettes for the flower petals.</p>
                     </div>
                 </div>
 
                 <div class="faq_item">
                     <div class="faq_q">
-                        <span>How long does it take to make the product?</span>
+                        <span data-i18n="faq_q_3">How long does it take to make the product?</span>
                         <i class="fa-solid fa-chevron-right faq_icon"></i>
                     </div>
                     <div class="faq_a">
-                        <p>Crafting takes approximately 2-4 business days depending on order volume and the intricacy of your custom request.</p>
+                        <p data-i18n="faq_a_3">Crafting takes approximately 2-4 business days depending on order volume and the intricacy of your custom request.</p>
                     </div>
                 </div>
 
                 <div class="faq_item">
                     <div class="faq_q">
-                        <span>Are the products made from recycled plastic bottles?</span>
+                        <span data-i18n="faq_q_4">Are the products made from recycled plastic bottles?</span>
                         <i class="fa-solid fa-chevron-right faq_icon"></i>
                     </div>
                     <div class="faq_a">
-                        <p>Yes, 100% of our materials are sourced from thoroughly cleaned, processed post-consumer recycled plastic bottles.</p>
+                        <p data-i18n="faq_a_4">Yes, 100% of our materials are sourced from thoroughly cleaned, processed post-consumer recycled plastic bottles.</p>
                     </div>
                 </div>
             </div>
@@ -308,8 +308,8 @@
                     <img src="assets/images/Logo.png" alt="ReBloom Logo" class="contact_logo">
                     <span class="contact_logo_txt">ReBloom</span>
                 </div>
-                <h2 class="contact_title">Have More<br><span class="hl_red">Questions</span> In Mind?</h2>
-                <p class="contact_sub">Write Down Your Thoughts, And Contact Us!</p>
+                <h2 class="contact_title" data-i18n="contact_title">Have More<br><span class="hl_red">Questions</span> In Mind?</h2>
+                <p class="contact_sub" data-i18n="contact_sub">Write Down Your Thoughts, And Contact Us!</p>
                 
                 <a href="whatsapp://send?phone=6285955044663" target="_blank" rel="noopener noreferrer" class="contact_wa_btn">
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp
@@ -320,19 +320,19 @@
                 <form class="contact_form" id="contact_form">
                     <div class="form_row">
                         <div class="form_grp">
-                            <label class="form_lbl" for="user_name">Your Name</label>
-                            <input type="text" id="user_name" class="form_inp" placeholder="Your full name..." required>
+                            <label class="form_lbl" for="user_name" data-i18n="contact_name_lbl">Your Name</label>
+                            <input type="text" id="user_name" class="form_inp" placeholder="Your full name..." data-i18n-placeholder="contact_name_placeholder" required>
                         </div>
                         <div class="form_grp">
-                            <label class="form_lbl" for="user_email">Email Address</label>
-                            <input type="email" id="user_email" class="form_inp" placeholder="Your email address..." required>
+                            <label class="form_lbl" for="user_email" data-i18n="contact_email_lbl">Email Address</label>
+                            <input type="email" id="user_email" class="form_inp" placeholder="Your email address..." data-i18n-placeholder="contact_email_placeholder" required>
                         </div>
                     </div>
                     <div class="form_grp">
-                        <label class="form_lbl" for="user_msg">Message</label>
-                        <textarea id="user_msg" class="form_inp form_txt" placeholder="Write down your message here..." rows="4" required></textarea>
+                        <label class="form_lbl" for="user_msg" data-i18n="contact_msg_lbl">Message</label>
+                        <textarea id="user_msg" class="form_inp form_txt" placeholder="Write down your message here..." data-i18n-placeholder="contact_msg_placeholder" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn_primary contact_submit_btn">Send Your Message</button>
+                    <button type="submit" class="btn btn_primary contact_submit_btn" data-i18n="contact_submit_btn">Send Your Message</button>
                 </form>
             </div>
         </div>
@@ -340,7 +340,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="footer_txt">&copy; 2026 ReBloom. Creative Handicrafts &amp; Sustainable Decor.</p>
+            <p class="footer_txt" data-i18n="footer_copy">&copy; 2026 ReBloom. Creative Handicrafts &amp; Sustainable Decor.</p>
         </div>
     </footer>
 

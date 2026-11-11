@@ -4,6 +4,45 @@ All notable changes, bug fixes, UI enhancements, and structural refactors for th
 
 ---
 
+## [2026-11-11] - Bilingual Translation (i18n) System Implementation
+
+### 1. Unified Cross-Page Bilingual Engine (`index.html`, `product*.html`, `receipt.html`, `assets/js/*.js`)
+- **Default & Alternate Languages**:
+  - English (`ENG`) set as default across all pages.
+  - Indonesian (`IDN`) supported as alternate language.
+  - `<html lang="en">` initialized statically, toggled dynamically to `<html lang="id">` when `IDN` is selected.
+- **Persistent State Management (`rebloom_lang`)**:
+  - Stores active language in `localStorage` under `rebloom_lang`.
+  - Implemented `get_saved_lang()` with safe fallback to `"ENG"` for missing/corrupt values.
+  - Implemented `set_active_lang(target_lang)` to update `localStorage`, document `lang`, `.lang_switch .lang_btn` `.active` classes, and trigger page translation.
+  - On `DOMContentLoaded`, each page script reads `rebloom_lang` and applies translations before or alongside dynamic hydration.
+- **Language Switcher UI (`.lang_switch .lang_btn`)**:
+  - Updated all HTML headers (`index.html`, `product.html`, `product_2.html`, `product_3.html`, `receipt.html`) so `.lang_btn` for `IDN` is inactive and `ENG` is `.active` by default.
+  - Added `data-lang="IDN"` and `data-lang="ENG"` attributes to buttons.
+- **Data Attribute Integration (`data-i18n`, `data-i18n-placeholder`)**:
+  - Applied `data-i18n` attributes across translatable static elements in all HTML templates.
+  - Applied `data-i18n-placeholder` attributes across input and textarea elements (contact form, note inputs).
+- **DOM & Icon Preservation**:
+  - Ensured Font Awesome `<i>` icons and dynamic counter spans (`#cart_count_highlight`, `#summary_item_count`) are never destroyed during translation by placing `data-i18n` on target text spans or parameterizing dynamic values.
+
+### 2. Page-Specific Implementations
+- **Landing Page (`index.html`, `assets/js/script.js`)**:
+  - Built comprehensive `landing_translations` dictionary covering Navbar, Hero, Features bar, Vision/Mission, Origin, Why Choose Us, 3 Product cards, FAQ accordion (4 questions & answers), Contact form, and Footer.
+  - Localized contact form submission alert (`contact_success_alert`).
+- **Product Pages (`product.html`, `product_2.html`, `product_3.html`, `assets/js/product.js`)**:
+  - Expanded `pack_catalog` with bilingual metadata fields: `title_en`, `title_id`, `desc_en`, `desc_id`, `category_en`, `category_id`.
+  - Built `product_translations` dictionary for shared navigation, ratings (`5.0 | 12 Reviews` vs `5.0 | 12 Ulasan`), configurator labels (`Flower Color` / `Warna Bunga`, `Quantity` / `Jumlah`, `Note` / `Catatan`), note placeholder, trust badge, buy button (`BUY NOW` / `BELI SEKARANG`), related products heading/description, and related switch button (`Switch / Order Pack` / `Ganti / Pesan Paket`).
+  - Updated `render_pack_details` and `render_related_packs` to re-render in the active language dynamically.
+- **Shopping Cart & Receipt Page (`receipt.html`, `assets/js/receipt.js`)**:
+  - Built `receipt_translations` dictionary for navigation, cart subheader, empty cart card, populated cart items, unit price labels, notes, order summary labels, free badges (`FREE` / `GRATIS`), and checkout footnote.
+  - Updated `render_cart_view` to dynamically localize category badges, item titles via `catalog_defaults`, note pills (`Note: None` / `Catatan: Tidak ada`), review text (`Reviewing X items selected for checkout` / `Meninjau X produk untuk checkout`), and subtotal labels.
+  - Localized WhatsApp Pre-Order message payload into Indonesian or English based on `rebloom_lang`.
+
+### 3. Documentation Synchronization
+- Updated `architecture.md`, `PRD.md`, `Design_System.md`, and `AGENT.md` to document the persistent bilingual translation system, `rebloom_lang` key, `ENG` default state, and one-to-one script isolation.
+
+---
+
 ## [2026-11-04] - Product Gallery Farthest-Left Queue Rotation & Multi-Page Pack Navigation
 
 ### 1. Farthest-Left Queue Rotation Gallery Swapper (`assets/js/product.js`)
@@ -111,83 +150,3 @@ All notable changes, bug fixes, UI enhancements, and structural refactors for th
 
 ### 4. Documentation Suite Synchronization
 - Updated `PRD.md`, `Design_System.md`, `architecture.md`, `AGENT.md`, `variables.md`, and `changelog.md`.
-
----
-
-## [2026-10-26] - End-to-End E-Commerce Flow, Pack Configurator & Receipt Handoff
-
-### 1. Catalog Architecture & URL Routing (`index.html`, `product.html`, `script.js`)
-- **Three-Pack Catalog Contract**: Defined unified master catalog `pack_catalog` in `assets/js/script.js` with keys `regular` (`Rp 10.000`), `bird_gift` (`Rp 12.000`), and `lamp_pot` (`Rp 15.000`), complete with titles, descriptions, unit prices, and assets.
-- **Landing Page Catalog Links**: Updated the three `.prod_btn` CTA anchors in `index.html` to target parameterized routes:
-  - Card 1: `href="product.html?pack=regular"`
-  - Card 2: `href="product.html?pack=bird_gift"`
-  - Card 3: `href="product.html?pack=lamp_pot"`
-- **FAQ Payment Method Update**: Updated first FAQ answer in `index.html#faq` to state clearly that ReBloom operates exclusively through **Pre-Order and Cash on Delivery (COD) / Cash Only**, with orders confirmed via WhatsApp.
-- **URL Parameter Handling**: Implemented query parameter parser `new URLSearchParams(window.location.search).get("pack")` on `product.html` load with automatic fallback to `regular`. Added `popstate` event support for browser Back/Forward navigation.
-
-### 2. Product Detail Configurator & Dynamic Interactions (`product.html`, `product.css`, `script.js`)
-- **DOM Hooks**: Connected `#prod_title` on `.prod_title`, `#prod_desc` on `.prod_desc`, and `#price_val` on `.price_val`.
-- **Purple Swatch & Swatch Titles**:
-  - Added Purple flower swatch `<button type="button" class="color_swatch swatch_purple" data-color="Purple" data-hex="#A855F7" aria-label="Purple" title="Purple"></button>`.
-  - Added `.color_swatch.swatch_purple { background-color: #A855F7; }` in `assets/css/product.css`.
-  - Added `title="..."` attributes to all four swatches (Sky Blue, Purple, Orchid Pink, Pastel Pink) for enhanced accessibility.
-- **Quantity Stepper & Live Pricing**:
-  - Bound `.qty_minus` and `.qty_plus` to update `.qty_val` with minimum bound 1.
-  - Dynamically recalculates and formats `unit_price * quantity` into `#price_val` using Indonesian locale separators (`id-ID`).
-- **Dynamic Related Products Switching**:
-  - Populates `.rel_left` dynamically with the two inactive packs.
-  - Bound `.rel_btn` (`Switch / Order Pack`) on related cards to switch the active pack, update URL parameter via `window.history.pushState`, refresh product details/price, and smoothly scroll to `#product_detail`.
-- **Sanitized Request Note**: Reads `#custom_note.value.trim()`.
-- **Dead Comments Cleanup**: Purged legacy commented-out lines and unneeded prototypes from `product.html`.
-
-### 3. Dynamic Order Receipt & Screenshot-Free WhatsApp Handoff (`receipt.html`, `receipt.css`, `script.js`)
-- **Script Connection**: Linked `<script src="assets/js/script.js"></script>` immediately before `</body>` in `receipt.html`.
-- **Screenshot Instruction Replacement**: Replaced `.status_desc` text with:
-  `Thank you for your purchase! No screenshot needed—just click 'Send To Admin' to automatically copy your ready-to-paste order receipt and send it via WhatsApp.`
-- **Dynamic Receipt Hydration**:
-  - Deserializes `sessionStorage.getItem("rebloom_order")` on load.
-  - Sets Order Date & Time to real timestamp formatted as `dd MMM yyyy, hh:mm AM/PM`.
-  - Sets Payment Method to `Cash Only (Pre-Order COD)`.
-  - Sets Line Item to `<quantity>x <pack_name>` (e.g. `2x Flower Bird Gift`).
-  - Dynamically sets `.custom_dot` background color to `color_hex`.
-  - Renders `.custom_text` as `<Color Name>, “<Custom Note>”` or `<Color Name> (No custom note)` (eliminating legacy dummy notes).
-  - Sets item subtotal and grand total to calculated total in Indonesian Rupiah format (`Rp XX.000,00`).
-- **One-Click Clipboard Copy & WhatsApp Handoff**:
-  - Bound `#btn_admin` to copy the complete plain-text formatted order receipt (`wa_message`) to clipboard via `navigator.clipboard.writeText(wa_message)`.
-  - Encodes receipt text and opens `https://wa.me/6282132829795?text=...`.
-  - Displays user action feedback ("Receipt Copied! Opening WhatsApp...") and falls back gracefully if clipboard permissions are restricted.
-- **Obsolete Commented Code Purge**:
-  - Removed obsolete commented-out `<header class="nav_bar">` from `receipt.html`.
-  - Removed dead commented `.nav_bar` CSS rules from `assets/css/receipt.css`.
-  - Corrected responsive media queries in `receipt.css` to target `.navbar` and `.nav_mid`.
-
-### 4. Documentation Suite Synchronization
-- **`PRD.md`**: Synchronized three-pack catalog routing, Purple swatch, `rebloom_order` contract, and screenshot-free WhatsApp handoff.
-- **`architecture.md`**: Updated DOM hierarchy trees, layout specifications, and Section 5 client runtime architecture.
-- **`Design_System.md`**: Updated color system table with Purple swatch (`#A855F7`), catalog pricing, and receipt handoff rules.
-- **`variables.md`**: Registered all new and updated classes, IDs, catalog keys, and runtime functions.
-
----
-
-## [2026-10-19] - Regular Pack Product Configurator Overhaul
-
-### 1. Product Showcase HTML Overhaul (`product.html`)
-- Configurator restructure to match Regular Pack mockup.
-- Rating update to 5.0 | 12 Reviews.
-- Circular color swatches and quantity stepper.
-- Custom note input and buy button styling.
-
-### 2. Styling & CSS Invariants (`assets/css/product.css`)
-- Zero `:root` verification.
-- Customization row flex layout and pill button styling.
-
-### 3. JavaScript Interactive Controls & State Contract (`assets/js/script.js`)
-- Color swatch selection and quantity stepper listeners.
-- Order serialization prototype.
-
----
-
-## [Initial Release] - ReBloom Order Receipt Refactor
-- Migrated legacy `kebab-case` classes and IDs in `receipt.html` and `receipt.css` to strict `snake_case`.
-- Replaced inline SVGs with Font Awesome 6.4.0 icons.
-- Enforced hardcoded hex color declarations with zero `:root` variables.

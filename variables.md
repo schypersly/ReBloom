@@ -385,3 +385,30 @@
 | `render_cart_view` | `receipt.js` | Cart View Dispatcher | Evaluates cart length and hydrates empty or populated cart view. |
 | `format_currency_unit` | `receipt.js` | Unit Currency Formatter | Formats number to "Rp XX.000" integer currency format. |
 | `format_currency_summary` | `receipt.js` | Summary Currency Formatter | Formats number to "Rp XX.000,00" comma-cents currency format. |
+
+
+---
+
+## 6. Bilingual Translation (i18n) Identifiers & Attributes
+
+| Identifier | File Source | Full Meaning | Function & Purpose |
+| :--- | :--- | :--- | :--- |
+| `rebloom_lang` | `localStorage`, `script.js`, `product.js`, `receipt.js` | Persistent Language Storage Key | Storage key persisting active language selection (`"ENG"` or `"IDN"`). |
+| `data-lang` | `index.html`, `product*.html`, `receipt.html` | Language Button Data Attribute | Data attribute on `.lang_btn` declaring button locale code (`ENG` or `IDN`). |
+| `data-i18n` | `index.html`, `product*.html`, `receipt.html` | Static Translation Data Attribute | HTML attribute mapping an element to a key in the page's translation dictionary. |
+| `data-i18n-placeholder` | `index.html`, `product*.html`, `receipt.html` | Placeholder Translation Data Attribute | HTML attribute mapping input/textarea placeholder text to translation dictionary key. |
+| `landing_translations` | `script.js` | Landing Page Translations Dictionary | Object holding `ENG` and `IDN` key-value pairs for all landing page elements. |
+| `product_translations` | `product.js` | Product Page Translations Dictionary | Object holding `ENG` and `IDN` key-value pairs for product detail & configurator. |
+| `receipt_translations` | `receipt.js` | Receipt Page Translations Dictionary | Object holding `ENG` and `IDN` key-value pairs for shopping cart & receipt. |
+| `get_saved_lang` | `script.js`, `product.js`, `receipt.js` | Get Saved Language Function | Reads `rebloom_lang` from `localStorage`, returning `"ENG"` as safe default. |
+| `set_active_lang` | `script.js`, `product.js`, `receipt.js` | Set Active Language Function | Validates and persists target language, toggles UI classes, and triggers translations. |
+| `apply_page_translation` | `script.js`, `product.js`, `receipt.js` | Apply Page Translation Function | Iterates over `[data-i18n]` and `[data-i18n-placeholder]` elements, updating DOM safely. |
+| `init_language_switcher` | `script.js`, `product.js`, `receipt.js` | Language Switcher Initializer | Binds click listeners to `.lang_switch .lang_btn` and initializes active language on load. |
+| `title_en` | `product.js` | English Title Catalog Property | Master catalog property storing English product name. |
+| `title_id` | `product.js` | Indonesian Title Catalog Property | Master catalog property storing Indonesian product name. |
+| `desc_en` | `product.js` | English Description Catalog Property | Master catalog property storing English product description. |
+| `desc_id` | `product.js` | Indonesian Description Catalog Property | Master catalog property storing Indonesian product description. |
+| `pack_name_en` | `receipt.js` | English Pack Name Catalog Property | Receipt catalog default property storing English pack name. |
+| `pack_name_id` | `receipt.js` | Indonesian Pack Name Catalog Property | Receipt catalog default property storing Indonesian pack name. |
+| `category_en` | `product.js`, `receipt.js` | English Category Catalog Property | Master catalog property storing English category name. |
+| `category_id` | `product.js`, `receipt.js` | Indonesian Category Catalog Property | Master catalog property storing Indonesian category name. |

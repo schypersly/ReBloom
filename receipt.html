@@ -17,7 +17,7 @@
 
   <!-- Top Navigation Bar -->
   <header>
-    <nav  class="navbar">
+    <nav class="navbar">
         <div class="nav_left">
             <a href="index.html">
                 <img src="assets/images/Logo.png" alt="ReBloom Logo" class="logo_img">
@@ -26,21 +26,21 @@
         </div>
         
         <ul class="nav_mid">
-            <li><a href="index.html#home" class="nav_link active">Home</a></li>
-            <li><a href="index.html#about" class="nav_link">About</a></li>
-            <li><a href="index.html#products" class="nav_link">Product</a></li>
-            <li><a href="index.html#faq" class="nav_link">FAQ</a></li>
-            <li><a href="index.html#contact" class="nav_link">Contact</a></li>
+            <li><a href="index.html#home" class="nav_link" data-i18n="nav_home">Home</a></li>
+            <li><a href="index.html#about" class="nav_link" data-i18n="nav_about">About</a></li>
+            <li><a href="index.html#products" class="nav_link" data-i18n="nav_products">Product</a></li>
+            <li><a href="index.html#faq" class="nav_link" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="index.html#contact" class="nav_link" data-i18n="nav_contact">Contact</a></li>
         </ul>
         
         <div class="nav_right">
             <div class="lang_switch">
-                <button type="button" class="lang_btn active">IDN</button>
-                <button type="button" class="lang_btn">ENG</button>
+                <button type="button" class="lang_btn" data-lang="IDN">IDN</button>
+                <button type="button" class="lang_btn active" data-lang="ENG">ENG</button>
             </div>
             <a href="receipt.html" class="btn_cart" aria-label="Shopping Cart">
               <i class="fa-solid fa-cart-shopping cart_icon"></i>
-              <span>Cart</span>
+              <span data-i18n="nav_cart">Cart</span>
             </a>
         </div>
     </nav>
@@ -53,8 +53,8 @@
       <!-- Subheader Bar -->
       <section class="cart_header_bar" aria-label="Cart Header">
         <div class="cart_header_left">
-          <span class="cart_eyebrow">ECO-FRIENDLY &amp; HANDMADE</span>
-          <h1 class="cart_main_title">Your Cart</h1>
+          <span class="cart_eyebrow" data-i18n="cart_eyebrow">ECO-FRIENDLY &amp; HANDMADE</span>
+          <h1 class="cart_main_title" data-i18n="cart_title">Your Cart</h1>
         </div>
         <div class="cart_header_right">
           <p class="cart_review_text">
@@ -69,17 +69,17 @@
           <div class="empty_icon_circle" aria-hidden="true">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
-          <h2 class="empty_title">Your Cart is Empty</h2>
-          <p class="empty_desc">
+          <h2 class="empty_title" data-i18n="empty_cart_title">Your Cart is Empty</h2>
+          <p class="empty_desc" data-i18n="empty_cart_desc">
             Looks like you haven't added any handcrafted floral pieces to your cart yet. Explore our sustainable collection to find your favorite.
           </p>
           <a href="product.html" class="start_shopping_btn">
-            <span>Start Shopping</span>
+            <span data-i18n="empty_cart_btn">Start Shopping</span>
             <i class="fa-solid fa-arrow-right"></i>
           </a>
           <div class="empty_trust_note">
             <i class="fa-solid fa-shield-halved"></i>
-            <span>Secure Pre-Order COD &amp; WhatsApp Confirmation Available</span>
+            <span data-i18n="empty_cart_trust">Secure Pre-Order COD &amp; WhatsApp Confirmation Available</span>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@
             <div class="continue_shopping_wrapper">
               <a href="product.html" class="continue_shopping_btn">
                 <i class="fa-solid fa-arrow-left"></i>
-                <span>Continue Shopping</span>
+                <span data-i18n="cart_continue_btn">Continue Shopping</span>
               </a>
             </div>
           </div>
@@ -105,19 +105,19 @@
           <!-- Right Column: Order Summary -->
           <aside class="order_summary_column" aria-label="Order Summary">
             <div class="order_summary_card">
-              <h2 class="summary_heading">Order Summary</h2>
+              <h2 class="summary_heading" data-i18n="summary_heading">Order Summary</h2>
 
               <div class="summary_info_group">
                 <div class="summary_info_row">
-                  <span class="summary_info_label">PAYMENT METHOD</span>
-                  <span class="summary_info_val">Cash Only (Pre-Order COD)</span>
+                  <span class="summary_info_label" data-i18n="summary_pay_method_lbl">PAYMENT METHOD</span>
+                  <span class="summary_info_val" data-i18n="summary_pay_method_val">Cash Only (Pre-Order COD)</span>
                 </div>
                 <div class="summary_info_row">
-                  <span class="summary_info_label">DELIVERY MODE</span>
-                  <span class="summary_info_val">Direct Handover / WhatsApp Scheduled</span>
+                  <span class="summary_info_label" data-i18n="summary_delivery_lbl">DELIVERY MODE</span>
+                  <span class="summary_info_val" data-i18n="summary_delivery_val">Direct Handover / WhatsApp Scheduled</span>
                 </div>
                 <div class="summary_info_row">
-                  <span class="summary_info_label">ORDER DATE</span>
+                  <span class="summary_info_label" data-i18n="summary_order_date_lbl">ORDER DATE</span>
                   <span class="summary_info_val" id="summary_order_date">-</span>
                 </div>
               </div>
@@ -126,41 +126,41 @@
 
               <div class="summary_rows">
                 <div class="summary_row">
-                  <span class="summary_row_label">
+                  <span class="summary_row_label" id="summary_subtotal_label">
                     Items Subtotal (<span id="summary_item_count">0</span> items)
                   </span>
                   <span class="summary_row_val" id="summary_subtotal_price">Rp 0,00</span>
                 </div>
 
                 <div class="summary_row">
-                  <span class="summary_row_label">Packaging &amp; Recycling Fee</span>
-                  <span class="free_badge">FREE</span>
+                  <span class="summary_row_label" data-i18n="summary_pkg_fee_lbl">Packaging &amp; Recycling Fee</span>
+                  <span class="free_badge" data-i18n="summary_free_badge">FREE</span>
                 </div>
 
                 <div class="summary_row">
-                  <span class="summary_row_label">Shipping Fee</span>
-                  <span class="free_badge">FREE (COD PICKUP)</span>
+                  <span class="summary_row_label" data-i18n="summary_shipping_fee_lbl">Shipping Fee</span>
+                  <span class="free_badge" data-i18n="summary_shipping_free_badge">FREE (COD PICKUP)</span>
                 </div>
               </div>
 
               <div class="summary_divider_solid"></div>
 
               <div class="summary_total_row">
-                <span class="summary_total_label">Total</span>
+                <span class="summary_total_label" data-i18n="summary_total_lbl">Total</span>
                 <span class="summary_total_val" id="summary_grand_total">Rp 0,00</span>
               </div>
 
               <div class="cod_guarantee_box">
                 <i class="fa-solid fa-circle-check cod_guarantee_icon"></i>
-                <span class="cod_guarantee_text">Secure Pre-Order COD By ReBloom</span>
+                <span class="cod_guarantee_text" data-i18n="summary_cod_guarantee">Secure Pre-Order COD By ReBloom</span>
               </div>
 
               <button type="button" id="proceed_checkout_btn" class="proceed_checkout_btn">
-                <span>Proceed to Checkout</span>
+                <span data-i18n="summary_checkout_btn">Proceed to Checkout</span>
                 <i class="fa-solid fa-arrow-right"></i>
               </button>
 
-              <p class="checkout_footnote">
+              <p class="checkout_footnote" data-i18n="summary_footnote">
                 Orders are confirmed directly with our admin via WhatsApp upon checkout.
               </p>
             </div>
@@ -175,7 +175,7 @@
   <!-- Clean Footer Bar -->
   <footer class="footer_bar">
     <div class="footer_container">
-      <p class="footer_copy">&copy; 2026 ReBloom. Creative Handicrafts &amp; Sustainable Decor.</p>
+      <p class="footer_copy" data-i18n="footer_copy">&copy; 2026 ReBloom. All Rights Reserved. Creative Handicrafts &amp; Sustainable Decor.</p>
     </div>
   </footer>
 
