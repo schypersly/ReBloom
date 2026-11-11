@@ -1,12 +1,4 @@
-/**
- * ReBloom - Product Detail & Configurator Controller (product.html, product_2.html, product_3.html)
- * Pure vanilla ES6+ JavaScript enforcing strict snake_case identifiers.
- */
-
 document.addEventListener("DOMContentLoaded", () => {
-  // ==========================================
-  // 1. Pack Catalog Data Contract
-  // ==========================================
   const pack_catalog = {
     regular: {
       key: "regular",
@@ -73,9 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // ==========================================
-  // 2. Translation Dictionary (Product Pages)
-  // ==========================================
+
   const product_translations = {
     ENG: {
       nav_home: "Home",
@@ -145,9 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // ==========================================
-  // 3. Language State Management
-  // ==========================================
+
   function get_saved_lang() {
     const saved_lang = localStorage.getItem("rebloom_lang");
     return saved_lang === "IDN" || saved_lang === "ENG" ? saved_lang : "ENG";
@@ -224,9 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
     set_active_lang(initial_lang);
   }
 
-  // ==========================================
-  // 4. Data Formatting Utilities
-  // ==========================================
+
+
   function format_idr(amount) {
     const formatted_num = Number(amount || 0).toLocaleString("id-ID");
     return `Rp ${formatted_num},00`;
@@ -251,9 +238,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${day_str} ${month_str} ${year_str}, ${hour_str}:${minutes} ${ampm}`;
   }
 
-  // ==========================================
-  // 5. Farthest-Left Thumbnail Queue Rotation
-  // ==========================================
+
+
   const main_img = document.getElementById("prod_main_img");
   const thumb_items = document.querySelectorAll(".prod_thumb");
 
@@ -277,22 +263,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (old_main_src === new_main_src) return;
 
-        // Collect current thumbnail attributes
+
         const current_thumbs = thumb_img_elements.map((el) => ({
           src: el.getAttribute("src"),
           alt: el.getAttribute("alt"),
         }));
 
-        // Remove clicked thumbnail from array
+
         current_thumbs.splice(clicked_index, 1);
 
-        // Place old main preview into farthest-left slot (index 0)
+
         current_thumbs.unshift({
           src: old_main_src,
           alt: old_main_alt,
         });
 
-        // Smooth 150ms opacity transition
+
         main_img.style.opacity = "0.3";
         setTimeout(() => {
           main_img.setAttribute("src", new_main_src);
@@ -311,9 +297,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================
-  // 6. Product Configurator, Routing & Checkout
-  // ==========================================
+
+
   const product_detail_sec = document.getElementById("product_detail");
   const prod_title_el = document.getElementById("prod_title");
   const prod_desc_el = document.getElementById("prod_desc");
@@ -446,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
       prod_desc_el.textContent = localized_desc;
     }
 
-    // Synchronize 4-photo gallery
+
     if (main_img && pack_data.gallery && pack_data.gallery.length >= 4) {
       main_img.setAttribute("src", pack_data.gallery[0]);
       main_img.setAttribute("alt", localized_title);
@@ -477,7 +462,8 @@ document.addEventListener("DOMContentLoaded", () => {
     render_related_packs(pack_key);
   }
 
-  // Color Swatch Selection Handler
+
+
   if (color_swatches.length > 0) {
     color_swatches.forEach((swatch) => {
       swatch.addEventListener("click", () => {
@@ -487,7 +473,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Quantity Stepper Controls (Minimum limit: 1)
+
+
   if (qty_minus_btn && qty_plus_btn && qty_val_el) {
     qty_minus_btn.addEventListener("click", () => {
       let current_qty = get_current_qty();
@@ -506,7 +493,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Buy Button - Bundle Order Payload, Persist to Cart, and Navigate to receipt.html
+
+
   if (buy_btn) {
     buy_btn.addEventListener("click", () => {
       const active_swatch = document.querySelector(".color_swatch.active");
@@ -568,7 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("rebloom_cart", JSON.stringify(cart_array));
       } catch (storage_err) {
-        // Graceful fallback
+
       }
 
       sessionStorage.setItem("rebloom_order", JSON.stringify(cart_item));
@@ -576,9 +564,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================
-  // 7. Static Contact Form Handler (Product Pages)
-  // ==========================================
+
+
   const contact_form = document.getElementById("contact_form");
   if (contact_form) {
     contact_form.addEventListener("submit", (submit_event) => {
@@ -592,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initialize Gallery Swapper, Details & Language Switcher
+
   init_gallery_swapper();
   init_language_switcher();
 });

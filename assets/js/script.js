@@ -1,12 +1,7 @@
-/**
- * ReBloom - Landing Page Application Logic (index.html)
- * Pure vanilla ES6+ JavaScript enforcing strict snake_case identifiers.
- */
-
+// Inisialisasi seluruh skrip interaktif setelah dokumen HTML selesai dimuat.
 document.addEventListener("DOMContentLoaded", () => {
-  // ==========================================
-  // 1. Translation Dictionary (Landing Page)
-  // ==========================================
+
+  // Kamus data terjemahan multibahasa untuk konten teks dalam Bahasa Inggris dan Bahasa Indonesia.
   const landing_translations = {
     ENG: {
       nav_home: "Home",
@@ -177,19 +172,18 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // ==========================================
-  // 2. Language State Management
-  // ==========================================
+  // Mengambil preferensi bahasa pengguna dari localStorage atau mengembalikan bahasa Inggris sebagai default.
   function get_saved_lang() {
     const saved_lang = localStorage.getItem("rebloom_lang");
     return saved_lang === "IDN" || saved_lang === "ENG" ? saved_lang : "ENG";
   }
 
+  // Menerapkan teks terjemahan ke seluruh elemen antarmuka yang memiliki atribut i18n.
   function apply_page_translation(target_lang) {
     const translations =
       landing_translations[target_lang] || landing_translations.ENG;
 
-    // Apply data-i18n attributes safely preserving any nested structures
+
     const translatable_elements = document.querySelectorAll("[data-i18n]");
     translatable_elements.forEach((element) => {
       const key = element.getAttribute("data-i18n");
@@ -203,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Apply placeholder translations
+
     const placeholder_elements = document.querySelectorAll(
       "[data-i18n-placeholder]"
     );
@@ -216,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Menyimpan bahasa pilihan ke penyimpanan lokal, memperbarui atribut HTML, dan menyegarkan tampilan tombol.
   function set_active_lang(target_lang) {
     const safe_lang =
       target_lang === "IDN" || target_lang === "ENG" ? target_lang : "ENG";
@@ -237,6 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     apply_page_translation(safe_lang);
   }
 
+  // Memasang event listener pada setiap tombol pilihan bahasa serta mengaktifkan bahasa awal.
   function init_language_switcher() {
     const lang_buttons = document.querySelectorAll(".lang_switch .lang_btn");
     if (lang_buttons.length > 0) {
@@ -254,13 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
     set_active_lang(initial_lang);
   }
 
-  // ==========================================
-  // 3. Navbar Scroll Spy (index.html)
-  // ==========================================
+  // Inisialisasi pendeteksi navigasi aktif berdasarkan posisi gulir jendela browser.
   const nav_sections = document.querySelectorAll("section[id]");
   const nav_links = document.querySelectorAll(".nav_link");
 
   if (nav_sections.length > 0 && nav_links.length > 0) {
+    // Event listener scroll untuk mendeteksi section yang sedang terlihat dan memperbarui indikator menu navigasi.
     window.addEventListener("scroll", () => {
       let current_section_id = "";
       const scroll_position = window.scrollY + 200;
@@ -286,9 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================
-  // 4. FAQ Accordion Controller (index.html)
-  // ==========================================
+  // Logika interaktivitas daftar pertanyaan umum (FAQ) dengan mekanisme akordeon.
   const faq_items = document.querySelectorAll(".faq_item");
   if (faq_items.length > 0) {
     faq_items.forEach((item) => {
@@ -297,10 +290,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!q_header) return;
 
+      // Event listener klik pada judul pertanyaan untuk membuka atau menutup panel jawaban.
       q_header.addEventListener("click", () => {
         const is_active = item.classList.contains("active");
 
-        // Close all open sibling items
         faq_items.forEach((other_item) => {
           other_item.classList.remove("active");
           const other_icon = other_item.querySelector(".faq_icon");
@@ -309,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        // Toggle selected item
+        // Percabangan untuk membuka panel pertanyaan terpilih jika status sebelumnya tertutup.
         if (!is_active) {
           item.classList.add("active");
           if (q_icon) {
@@ -320,11 +313,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================
-  // 5. Static Contact Form Handler (index.html)
-  // ==========================================
+  // Inisialisasi penanganan pengiriman pesan melalui formulir kontak.
   const contact_form = document.getElementById("contact_form");
   if (contact_form) {
+    // Event listener submit untuk memproses formulir, menampilkan notifikasi sukses, dan mengosongkan kolom input.
     contact_form.addEventListener("submit", (submit_event) => {
       submit_event.preventDefault();
       const current_lang = get_saved_lang();
@@ -336,6 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initialize Language Engine
+  // Memulai inisialisasi fitur pengalih bahasa saat dokumen telah siap.
   init_language_switcher();
 });

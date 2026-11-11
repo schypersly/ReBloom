@@ -1,12 +1,5 @@
-/**
- * ReBloom - Shopping Cart & Order Receipt Controller
- * Strictly vanilla ES6+ JavaScript enforcing snake_case identifiers.
- */
-
 document.addEventListener("DOMContentLoaded", () => {
-  // ==========================================
-  // 1. Constants & Catalog Metadata
-  // ==========================================
+
   const cart_storage_key = "rebloom_cart";
   const legacy_order_key = "rebloom_order";
   const admin_whatsapp_phone = "6282132829795";
@@ -41,9 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // ==========================================
-  // 2. Translation Dictionary (Receipt Page)
-  // ==========================================
   const receipt_translations = {
     ENG: {
       nav_home: "Home",
@@ -129,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // ==========================================
-  // 3. Language State Management
-  // ==========================================
+
   function get_saved_lang() {
     const saved_lang = localStorage.getItem("rebloom_lang");
     return saved_lang === "IDN" || saved_lang === "ENG" ? saved_lang : "ENG";
@@ -205,9 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     set_active_lang(initial_lang);
   }
 
-  // ==========================================
-  // 4. DOM Elements
-  // ==========================================
+
   const empty_cart_state = document.getElementById("empty_cart_state");
   const populated_cart_state = document.getElementById("populated_cart_state");
   const cart_items_list = document.getElementById("cart_items_list");
@@ -220,12 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const summary_order_date = document.getElementById("summary_order_date");
   const proceed_checkout_btn = document.getElementById("proceed_checkout_btn");
 
-  // Track item currently in inline note-editing mode
+
   let active_editing_item_id = null;
 
-  // ==========================================
-  // 5. Formatting Helper Utilities
-  // ==========================================
+
   function format_currency_unit(amount) {
     const formatted_number = Number(amount || 0).toLocaleString("id-ID");
     return `Rp ${formatted_number}`;
@@ -255,9 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${day_string} ${month_string} ${year_string}, ${hour_string}:${minutes} ${ampm}`;
   }
 
-  // ==========================================
-  // 6. Cart State Persistence & Migration
-  // ==========================================
   function get_cart_items() {
     const raw_cart_data = localStorage.getItem(cart_storage_key);
     if (raw_cart_data) {
@@ -267,11 +248,10 @@ document.addEventListener("DOMContentLoaded", () => {
           return parsed_items;
         }
       } catch (err) {
-        // Fallback on corrupt JSON
       }
     }
 
-    // Check if legacy single-item order exists in sessionStorage
+
     const raw_legacy_order = sessionStorage.getItem(legacy_order_key);
     if (raw_legacy_order) {
       try {
@@ -311,7 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
           return initial_cart;
         }
       } catch (legacy_err) {
-        // Fallback on corrupt JSON
       }
     }
 
@@ -322,9 +301,8 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(cart_storage_key, JSON.stringify(cart_items));
   }
 
-  // ==========================================
-  // 7. Quantity & Note Mutations
-  // ==========================================
+
+
   function update_cart_quantity(item_id, delta) {
     const cart_items = get_cart_items();
     const item_index = cart_items.findIndex((item) => item.id === item_id);
@@ -358,14 +336,13 @@ document.addEventListener("DOMContentLoaded", () => {
     render_cart_view();
   }
 
-  // ==========================================
-  // 8. View Rendering
-  // ==========================================
+
+
   function render_cart_view() {
     const cart_items = get_cart_items();
     const current_lang = get_saved_lang();
 
-    // 8.1 Empty Cart State
+
     if (cart_items.length === 0) {
       if (empty_cart_state) empty_cart_state.style.display = "block";
       if (populated_cart_state) populated_cart_state.style.display = "none";
@@ -382,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 8.2 Populated Cart State
+
     if (empty_cart_state) empty_cart_state.style.display = "none";
     if (populated_cart_state) populated_cart_state.style.display = "block";
 
@@ -427,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
       summary_order_date.textContent = format_order_timestamp();
     }
 
-    // 8.3 Render Cart Items List
+
     if (!cart_items_list) return;
     cart_items_list.innerHTML = "";
 
@@ -667,7 +644,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const encoded_wa_url = `https://wa.me/${admin_whatsapp_phone}?text=${encodeURIComponent(wa_message)}`;
 
-      // Attempt clipboard copy with visual feedback
       const original_btn_html = proceed_checkout_btn.innerHTML;
       const feedback_text =
         receipt_translations[current_lang]?.copy_btn_feedback ||
@@ -679,7 +655,6 @@ document.addEventListener("DOMContentLoaded", () => {
           proceed_checkout_btn.innerHTML = `<span>${feedback_text}</span> <i class="fa-solid fa-arrow-right"></i>`;
         }
       } catch (clip_err) {
-        // Fallback without clipboard
       }
 
       setTimeout(() => {
@@ -689,6 +664,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initialize Language Switcher & View
   init_language_switcher();
 });

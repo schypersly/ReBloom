@@ -1,7 +1,9 @@
+/* Impor font eksternal Telma dan Figtree dari web font provider. */
 @import url('https://api.fontshare.com/v2/css?f[]=telma@300,400,500,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap');
 
-/* --- Reset & Base Styles --- */
+
+/* Reset dasar styling dan pengaturan box-sizing untuk seluruh elemen halaman. */
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +14,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Pengaturan tipografi utama, warna latar belakang, dan ukuran font global. */
 body {
     font-family: 'Figtree', sans-serif;
     color: #333333;
@@ -21,6 +24,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Gaya kelas bantuan umum meliputi tata letak kontainer, tautan, teks aksen, dan tombol dasar. */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -77,6 +81,7 @@ img {
 
 
 
+/* Penataan bilah navigasi utama yang menempel tetap di bagian atas layar. */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -142,6 +147,7 @@ img {
     margin-right: 7%;
 }
 
+/* Gaya visual tombol pengalih bahasa antarmuka antara bahasa Indonesia dan Inggris. */
 .lang_switch {
     display: flex;
     align-items: center;
@@ -174,7 +180,7 @@ img {
     color: #FFFFFF;
 }
 
-.btn_cart {
+/* .btn_cart {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -190,14 +196,15 @@ img {
 .btn_cart:hover {
   background-color: #c83244;
   transform: translateY(-1px);
-}
+} */
 
 .cart_icon {
   font-size: 14px;
   line-height: 1;
 }
 
-/* --- Main Page Container & Layout --- */
+
+/* Pembungkus halaman utama keranjang belanja beserta penataan judul dan indikator jumlah item. */
 .cart_page_wrapper {
   flex: 1;
   padding-top: 110px;
@@ -210,7 +217,7 @@ img {
   margin: 0 auto;
 }
 
-/* --- Cart Subheader Bar --- */
+
 .cart_header_bar {
   display: flex;
   justify-content: space-between;
@@ -257,6 +264,7 @@ img {
   color: #e03e52;
 }
 
+/* Tata letak dan gaya kartu informasi ketika keranjang belanja masih dalam kondisi kosong. */
 /* --- 1. Empty Cart State --- */
 .empty_cart_section {
   width: 100%;
@@ -338,6 +346,7 @@ img {
   font-size: 14px;
 }
 
+/* Tata letak kisi dua kolom untuk menampilkan daftar produk pesanan dan ringkasan transaksi. */
 /* --- 2. Populated Cart State --- */
 .populated_cart_section {
   width: 100%;
@@ -350,6 +359,7 @@ img {
   align-items: flex-start;
 }
 
+/* Rangkaian gaya untuk kolom kiri yang menampilkan daftar kartu item belanjaan. */
 /* --- Left Column: Cart Items --- */
 .cart_items_column {
   display: flex;
@@ -487,6 +497,7 @@ img {
   color: #e03e52;
 }
 
+/* Tampilan formulir pengeditan catatan pesanan kustom secara langsung di dalam kartu produk. */
 /* Inline Note Edit Form */
 .note_edit_form {
   display: inline-flex;
@@ -535,6 +546,7 @@ img {
   color: #e03e52;
 }
 
+/* Gaya tombol untuk menghapus item produk dari daftar belanja keranjang. */
 .item_delete_btn {
   border: none;
   position: absolute;
@@ -552,6 +564,7 @@ img {
   background-color: #fdecef;
 }
 
+/* Penataan baris bawah kartu produk yang menyajikan label harga satuan produk. */
 /* Bottom Row inside Item Card */
 .item_bottom_row {
   margin-top: 14px;
@@ -582,6 +595,7 @@ img {
   color: #1a1a1a;
 }
 
+/* Pengaturan komponen pengubah jumlah kuantitas produk dengan tombol tambah dan kurang. */
 /* Quantity Stepper Controls */
 .qty_stepper {
   display: inline-flex;
@@ -641,6 +655,7 @@ img {
   background-color: #1bb55b49;
 }
 
+/* Gaya tombol sekunder untuk kembali ke katalog produk dan melanjutkan belanja. */
 /* Continue Shopping Action */
 .continue_shopping_wrapper {
   margin-top: 12px;
@@ -667,6 +682,7 @@ img {
   transform: translateY(-1px);
 }
 
+/* Rangkaian gaya kartu kolom kanan yang merangkum rincian perhitungan biaya pesanan. */
 /* --- Right Column: Order Summary --- */
 .order_summary_column {
   position: sticky;
@@ -782,6 +798,7 @@ img {
   color: #1a1a1a;
 }
 
+/* Kotak lencana pemberitahuan garansi metode pembayaran Cash On Delivery (COD). */
 .cod_guarantee_box {
   background-color: #eafaf1;
   border: 1px solid #c8f0d8;
@@ -805,6 +822,7 @@ img {
   color: #15803d;
 }
 
+/* Gaya tombol utama untuk memproses pembayaran dan mengarahkan pesanan ke WhatsApp. */
 .proceed_checkout_btn {
   border: none;
   width: 100%;
@@ -843,6 +861,7 @@ img {
   line-height: 1.5;
 }
 
+/* Penataan bilah kaki halaman penutup yang menampilkan informasi hak cipta. */
 /* --- Clean Footer Bar --- */
 .footer_bar {
   background-color: #ffffff;
@@ -864,6 +883,7 @@ img {
   font-weight: 400;
 }
 
+/* Aturan media query responsif untuk tata letak layar tablet di bawah 900 piksel. */
 /* --- Responsive Layout Breakpoints --- */
 @media (max-width: 900px) {
   .nav_mid {
@@ -880,6 +900,7 @@ img {
   }
 }
 
+/* Aturan media query responsif untuk penyesuaian tampilan perangkat ponsel di bawah 576 piksel. */
 @media (max-width: 576px) {
   .navbar {
     padding: 14px 5%;
