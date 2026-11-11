@@ -739,7 +739,9 @@ img {
     transform: translateY(-5px);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 
-    .prod_feats li span {
+    .prod_feats li .prod_span_1, 
+    .prod_feats li .prod_span_2, 
+    .prod_feats li .prod_span_3 {
         font-weight: 650;
         color: #E3475D;
     }
@@ -756,11 +758,18 @@ img {
     height: 90px;
     border-radius: 50%;
     background-color: #f5b0c47b;
-    color: #E3475D;
+    /* color: #E3475D; */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
+    /* font-size: 34px; */
+}
+
+.prod_thumb_img_box {
+    width: 90%;
+    height: auto;
+    border-radius: 999px;
+    /* margin-bottom: 20px; */
 }
 
 .prod_title {
