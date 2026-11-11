@@ -1,3 +1,26 @@
+.btn_cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #e03e52;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(224, 62, 82, 0.2);
+}
+
+.btn_cart:hover {
+  background-color: #c83244;
+  transform: translateY(-1px);
+}
+
+.cart_icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
 #product_detail.prod_sec {
     min-height: 100vh;
     display: flex;
