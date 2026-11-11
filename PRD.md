@@ -121,6 +121,7 @@
   - All 4 questions and answers fully translated between English and Indonesian.
 - **Contact Section & Footer**:
   - Labels, input placeholders, send button, and copyright notice localized.
+  - Interactive Contact Form (`#contact_form`): Intercepts submissions to validate Name (`sender_name`), Email Address (`sender_email`), and Message (`sender_message`). Formats structured bilingual inquiry text, dispatches directly to ReBloom Admin WhatsApp (`https://wa.me/6282132829795`) in a new tab (`_blank`) with `window.location.href` fallback, and automatically resets the form.
 
 ### 4.2 Product Customization & Configurator Pages (`product.html`, `product_2.html`, `product_3.html`, `assets/js/product.js`)
 - **Interactive Product Gallery**:
@@ -224,6 +225,40 @@ Halo Admin ReBloom! Saya ingin memesan Pre-Order (Cash on Delivery):
 Mohon konfirmasi detail pesanan pre-order saya. Terima kasih!
 ```
 
+### 5.3 WhatsApp Contact Inquiry Payloads
+
+The contact form (`#contact_form`) on `index.html` and all product pages (`product.html`, `product_2.html`, `product_3.html`) routes customer questions directly to the ReBloom Admin WhatsApp number `6282132829795`.
+
+#### Inquiry Mechanics
+- **Target URL**: `https://wa.me/6282132829795?text={encoded_message}`
+- **Required Fields**: Name (`sender_name`), Email Address (`sender_email`), Message / Question (`sender_message`).
+- **Validation**: All three inputs are trimmed. If any field is empty, the first empty control is focused and submission aborts.
+- **Language Synchronization**: Uses `get_saved_lang()` (`"ENG"` default, `"IDN"` alternate).
+- **Handoff & Fallback**: Dispatches via `window.open(wa_url, "_blank")`, falling back to `window.location.href = wa_url` if blocked.
+- **Form State**: Form is automatically reset via `contact_form.reset()` after handoff initiation.
+
+#### English (`ENG`)
+```text
+Hello ReBloom Admin! I have a question from the website contact form:
+
+*Name:* {sender_name}
+*Email:* {sender_email}
+
+*Question / Message:*
+{sender_message}
+```
+
+#### Indonesian (`IDN`)
+```text
+Halo Admin ReBloom! Saya ingin bertanya melalui formulir kontak website:
+
+*Nama:* {sender_name}
+*Email:* {sender_email}
+
+*Pertanyaan / Pesan:*
+{sender_message}
+```
+
 ---
 
 ## 6. Acceptance Criteria Checklist
@@ -233,7 +268,7 @@ Mohon konfirmasi detail pesanan pre-order saya. Terima kasih!
 - [x] Clicking `ENG` restores complete English wording.
 - [x] Missing or invalid `rebloom_lang` values default safely to `"ENG"`.
 - [x] All 4 FAQ questions and answers are translated accurately.
-- [x] Contact form labels, placeholders, and submission alerts are bilingual.
+- [x] Contact form labels, placeholders, and validation are bilingual, intercepting submissions to hand off inquiries to ReBloom Admin WhatsApp (`6282132829795`) in a new tab (with `window.location.href` fallback) and resetting the form.
 - [x] Product titles and descriptions use catalog fields `title_en`/`title_id` and `desc_en`/`desc_id`.
 - [x] Related product cards re-render in the active language.
 - [x] Cart item cards translate category tags, product titles, note labels, and unit price labels.

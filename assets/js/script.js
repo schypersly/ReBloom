@@ -313,19 +313,96 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Inisialisasi penanganan pengiriman pesan melalui formulir kontak.
+  // ==========================================
+  // WhatsApp Contact Form Handoff Handler
+  // ==========================================
   const contact_form = document.getElementById("contact_form");
+  const admin_wa_number = "6282132829795";
+
+  function build_contact_wa_url(sender_name, sender_email, sender_message, lang) {
+    let wa_message_lines = [];
+
+    if (lang === "IDN") {
+      wa_message_lines = [
+        "Halo Admin ReBloom! Saya ingin bertanya melalui formulir kontak website:",
+        "",
+        `*Nama:* ${sender_name}`,
+        `*Email:* ${sender_email}`,
+        "",
+        "*Pertanyaan / Pesan:*",
+        sender_message,
+      ];
+    } else {
+      wa_message_lines = [
+        "Hello ReBloom Admin! I have a question from the website contact form:",
+        "",
+        `*Name:* ${sender_name}`,
+        `*Email:* ${sender_email}`,
+        "",
+        "*Question / Message:*",
+        sender_message,
+      ];
+    }
+
+    return (
+      "https://wa.me/" +
+      admin_wa_number +
+      "?text=" +
+      encodeURIComponent(wa_message_lines.join("\n"))
+    );
+  }
+
+  function handle_contact_submit(submit_event) {
+    submit_event.preventDefault();
+
+    const name_input =
+      document.getElementById("user_name") ||
+      document.getElementById("sender_name");
+    const email_input =
+      document.getElementById("user_email") ||
+      document.getElementById("sender_email");
+    const msg_input =
+      document.getElementById("user_msg") ||
+      document.getElementById("sender_message");
+
+    const sender_name = name_input ? name_input.value.trim() : "";
+    const sender_email = email_input ? email_input.value.trim() : "";
+    const sender_message = msg_input ? msg_input.value.trim() : "";
+
+    if (!sender_name) {
+      if (name_input) name_input.focus();
+      return;
+    }
+
+    if (!sender_email) {
+      if (email_input) email_input.focus();
+      return;
+    }
+
+    if (!sender_message) {
+      if (msg_input) msg_input.focus();
+      return;
+    }
+
+    const current_lang = get_saved_lang();
+    const wa_url = build_contact_wa_url(
+      sender_name,
+      sender_email,
+      sender_message,
+      current_lang
+    );
+
+    const wa_window = window.open(wa_url, "_blank");
+
+    if (!wa_window) {
+      window.location.href = wa_url;
+    }
+
+    contact_form.reset();
+  }
+
   if (contact_form) {
-    // Event listener submit untuk memproses formulir, menampilkan notifikasi sukses, dan mengosongkan kolom input.
-    contact_form.addEventListener("submit", (submit_event) => {
-      submit_event.preventDefault();
-      const current_lang = get_saved_lang();
-      const alert_msg =
-        landing_translations[current_lang]?.contact_success_alert ||
-        landing_translations.ENG.contact_success_alert;
-      alert(alert_msg);
-      contact_form.reset();
-    });
+    contact_form.addEventListener("submit", handle_contact_submit);
   }
 
   // Memulai inisialisasi fitur pengalih bahasa saat dokumen telah siap.

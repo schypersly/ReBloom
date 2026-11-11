@@ -4,6 +4,30 @@ All notable changes, bug fixes, UI enhancements, and structural refactors for th
 
 ---
 
+## [2026-11-11] - WhatsApp Contact Form Handoff Implementation
+
+### 1. Dynamic WhatsApp Inquiry Dispatch (`assets/js/script.js`, `assets/js/product.js`)
+- **Static Alert Replacement**:
+  - Replaced legacy static `alert()` mock submission handler on `#contact_form` across `assets/js/script.js` (for `index.html`) and `assets/js/product.js` (for `product.html`, `product_2.html`, and `product_3.html`).
+- **Input Harvesting & Validation**:
+  - Extracted and trimmed Name (`sender_name`), Email Address (`sender_email`), and Message (`sender_message`).
+  - Added strict sequential field validation that focuses the first empty control and aborts submission if any input is missing.
+- **Bilingual Message Formatting (`build_contact_wa_url`)**:
+  - Leveraged `get_saved_lang()` to retrieve active language (`"ENG"` default / `"IDN"` alternate).
+  - Formatted structured inquiry payloads with sender name, email, and questions.
+- **WhatsApp API Dispatch & Lifecycle**:
+  - Routed inquiries to ReBloom Admin WhatsApp number `6282132829795` using `https://wa.me/6282132829795?text=...`.
+  - Opened chat in a new browser tab (`_blank`) with seamless fallback to `window.location.href` if popup window creation is blocked.
+  - Automatically called `contact_form.reset()` upon handoff initiation.
+
+### 2. Documentation Synchronization
+- **`PRD.md`**: Updated Section 4.1, 4.2, 5.3, and 6 to document the WhatsApp inquiry mechanics, bilingual templates, URL contracts, and acceptance checklist.
+- **`architecture.md`**: Updated Section 1 and Section 6 to document the decoupled `#contact_form` handoff architecture.
+- **`AGENT.md`**: Updated Section 2 to include the WhatsApp Contact Form Handoff invariant.
+- **`variables.md`**: Registered `admin_wa_number`, `build_contact_wa_url`, `handle_contact_submit`, `sender_name`, `sender_email`, and `sender_message`.
+
+---
+
 ## [2026-11-11] - Bilingual Translation (i18n) System Implementation
 
 ### 1. Unified Cross-Page Bilingual Engine (`index.html`, `product*.html`, `receipt.html`, `assets/js/*.js`)

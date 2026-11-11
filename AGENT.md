@@ -38,6 +38,9 @@ When writing or modifying `index.html`, `product.html`, `product_2.html`, `produ
 - **Zero `:root` or CSS Variables**: Never use `:root` or `var(--...)`. Hardcode all hex colors and pixel/rem dimensions directly onto CSS rules.
 - **Font Awesome 6.4.0 Only**: Use Font Awesome classes (`<i class="fa-solid ..."></i>`, `<i class="fa-regular ..."></i>`, `<i class="fa-brands ..."></i>`) for all icons. Never use inline `<svg>` tags.
 - **Zero Backend / Payment Gateways**: Keep the flow strictly client-side Pre-Order COD persisted in `localStorage` and redirecting directly to WhatsApp (`6282132829795`).
+- **WhatsApp Direct Handoffs**:
+  - **Pre-Order COD Checkout**: Finalized from `receipt.html` via itemized cart payload dispatched to `https://wa.me/6282132829795`.
+  - **Customer Inquiry Handoff**: Intercepted from `#contact_form` across `index.html`, `product.html`, `product_2.html`, and `product_3.html`. Formats bilingual (`ENG` / `IDN` via `get_saved_lang()`) message payloads with sender Name (`sender_name`), Email (`sender_email`), and Message (`sender_message`), focuses the first empty control if validation fails, dispatches to `https://wa.me/6282132829795` in a new tab (`_blank`) with `window.location.href` fallback, and resets the form immediately.
 
 ---
 

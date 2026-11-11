@@ -289,6 +289,12 @@
 | `wa_message` | `script.js` | Formatted WhatsApp Payload | Plain-text receipt summary formatted for WhatsApp and clipboard copy. |
 | `wa_encoded` | `script.js` | Encoded WhatsApp URL String | URI-encoded message string appended to WhatsApp click-to-chat API. |
 | `wa_url` | `script.js` | WhatsApp Direct URL String | Full WhatsApp link with prefilled message. |
+| `admin_wa_number` | `script.js`, `product.js` | Admin WhatsApp Phone Number | ReBloom official admin WhatsApp number constant (`6282132829795`). |
+| `build_contact_wa_url` | `script.js`, `product.js` | WhatsApp Inquiry URL Builder | Generates bilingual (`ENG`/`IDN`) encoded inquiry URL string targeting admin WhatsApp. |
+| `handle_contact_submit` | `script.js`, `product.js` | Contact Form Submit Handler | Validates fields, focuses first missing input, builds WhatsApp URL, dispatches in new tab with fallback, and resets form. |
+| `sender_name` | `script.js`, `product.js` | Contact Sender Name String | Trimmed sender name string captured from contact form input. |
+| `sender_email` | `script.js`, `product.js` | Contact Sender Email String | Trimmed sender email address string captured from contact form input. |
+| `sender_message` | `script.js`, `product.js` | Contact Sender Message String | Trimmed inquiry message string captured from contact form textarea. |
 
 ---
 

@@ -27,7 +27,7 @@ ReBloom End-to-End Application Flow
 │    │   ├── Card 1 -> product.html                                          │
 │    │   ├── Card 2 -> product_2.html                                        │
 │    │   └── Card 3 -> product_3.html                                        │
-│    └── FAQ Accordion (.faq_box) [Pre-Order COD] & Direct Contact           │
+│    └── FAQ Accordion (.faq_box) & WhatsApp Inquiry Contact Form            │
 └─────────────────────────────────────┬──────────────────────────────────────┘
                                       │ Clicks "Order Product" (.prod_btn)
                                       ▼
@@ -305,7 +305,7 @@ Contains strictly scoped Landing Page features initialized on `DOMContentLoaded`
    - Persists language selection in `localStorage` under `rebloom_lang`.
 2. **Navbar Scroll Spy (`section[id]`, `.nav_link`)**: Updates active anchor states as the user scrolls.
 3. **FAQ Accordion (`.faq_item`, `.faq_q`, `.faq_icon`)**: Single-open interactive accordion with chevron glyph toggling.
-4. **Contact Form (`#contact_form`)**: Client-side inquiry submission interceptor with bilingual alert.
+4. **WhatsApp Contact Form Handoff (`#contact_form`, `handle_contact_submit`, `build_contact_wa_url`)**: Intercepts contact form submissions on `index.html`. Validates that Name (`sender_name`), Email (`sender_email`), and Message (`sender_message`) contain non-empty trimmed values (focusing the first empty control on failure). Determines active language via `get_saved_lang()`, formats a clean bilingual WhatsApp message template (`ENG` or `IDN`), and dispatches to `https://wa.me/6282132829795` via `window.open` in a new tab (with `window.location.href` fallback). Resets the form immediately via `contact_form.reset()`.
 
 ### 6.2 Product Configurator Controller (`assets/js/product.js` -> `product.html`, `product_2.html`, `product_3.html`)
 Contains all product-specific logic initialized on `DOMContentLoaded`:
@@ -317,6 +317,7 @@ Contains all product-specific logic initialized on `DOMContentLoaded`:
 6. **Quantity Stepper & Live Pricing**: Bound stepper with minimum limit 1 and live IDR formatting.
 7. **Cart Persistence & Buy Action**: Appends or increments item in `localStorage` under `rebloom_cart`, stores `sessionStorage` fallback under `rebloom_order`, and redirects to `receipt.html`.
 8. **Language Controller**: Reads `rebloom_lang`, localizes static configurator copy, and re-renders product details and related cards upon toggle.
+9. **WhatsApp Contact Form Handoff (`#contact_form`, `handle_contact_submit`, `build_contact_wa_url`)**: Intercepts contact form submissions on all product pages (`product.html`, `product_2.html`, `product_3.html`), executing the identical input validation, active language resolution, bilingual template formatting, and new-tab handoff to `https://wa.me/6282132829795` with form reset.
 
 ### 6.3 Shopping Cart & Receipt Controller (`assets/js/receipt.js` -> `receipt.html` ONLY)
 Dedicated shopping cart and WhatsApp pre-order controller initialized on `DOMContentLoaded`:
