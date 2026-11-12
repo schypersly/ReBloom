@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const key = element.getAttribute("data-i18n");
       const translation = translations[key];
       if (translation !== undefined) {
+        // Percabangan untuk merender elemen terjemahan sebagai HTML jika memuat tag atau sebagai teks polos.
         if (translation.includes("<") && translation.includes(">")) {
           element.innerHTML = translation;
         } else {
@@ -313,15 +314,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Penanganan pengiriman formulir kontak yang dialihkan langsung menuju pesan WhatsApp admin.
   // ==========================================
   // WhatsApp Contact Form Handoff Handler
   // ==========================================
   const contact_form = document.getElementById("contact_form");
   const admin_wa_number = "6282132829795";
 
+  // Menyusun tautan URL WhatsApp API beserta format teks pesan otomatis sesuai pilihan bahasa.
   function build_contact_wa_url(sender_name, sender_email, sender_message, lang) {
     let wa_message_lines = [];
 
+    // Percabangan untuk memilih template format pesan WhatsApp dalam Bahasa Indonesia atau Bahasa Inggris.
     if (lang === "IDN") {
       wa_message_lines = [
         "Halo Admin ReBloom! Saya ingin bertanya melalui formulir kontak website:",
@@ -352,6 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Fungsi penangan submit untuk memvalidasi kolom input formulir dan membuka tautan pesan WhatsApp.
   function handle_contact_submit(submit_event) {
     submit_event.preventDefault();
 
@@ -369,6 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sender_email = email_input ? email_input.value.trim() : "";
     const sender_message = msg_input ? msg_input.value.trim() : "";
 
+    // Percabangan validasi untuk memastikan seluruh kolom input wajib telah diisi sebelum memproses formulir.
     if (!sender_name) {
       if (name_input) name_input.focus();
       return;
@@ -394,6 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const wa_window = window.open(wa_url, "_blank");
 
+    // Percabangan penanganan fallback jika jendela baru WhatsApp diblokir oleh browser.
     if (!wa_window) {
       window.location.href = wa_url;
     }
@@ -401,6 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contact_form.reset();
   }
 
+  // Memasang event listener submit pada elemen formulir kontak untuk menangani pengiriman pesan.
   if (contact_form) {
     contact_form.addEventListener("submit", handle_contact_submit);
   }
