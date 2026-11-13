@@ -5,202 +5,175 @@
 
 /* Reset dasar styling dan pengaturan box-sizing untuk seluruh elemen halaman. */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Pengaturan tipografi utama, warna latar belakang, dan ukuran font global. */
 body {
-    font-family: 'Figtree', sans-serif;
-    color: #333333;
-    background-color: #FFFFFF;
-    line-height: 1.6;
-    font-size: 20px;
-    overflow-x: hidden;
+  font-family: 'Figtree', sans-serif;
+  color: #333333;
+  background-color: #FFFFFF;
+  line-height: 1.6;
+  font-size: 20px;
+  overflow-x: hidden;
 }
 
 /* Gaya kelas bantuan umum meliputi tata letak kontainer, tautan, teks aksen, dan tombol dasar. */
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 ul, ol {
-    list-style: none;
+  list-style: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hl_red {
-    color: #E3475D !important;
-}
-
-.font_telma {
-    font-family: 'Telma', sans-serif;
+  color: #E3475D !important;
 }
 
 .btn {
-    display: inline-block;
-    padding: 12px 32px;
-    font-family: 'Figtree', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 50px;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  display: inline-block;
+  padding: 12px 32px;
+  font-family: 'Figtree', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .btn_primary {
-    background-color: #E3475D;
-    color: #FFFFFF;
+  background-color: #E3475D;
+  color: #FFFFFF;
 }
 
 .btn_primary:hover {
-    background-color: #cc374c;
-    transform: translateY(-2px);
+  background-color: #cc374c;
+  transform: translateY(-2px);
 }
 
 
 
 /* Penataan bilah navigasi utama yang menempel tetap di bagian atas layar. */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 6%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 6%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
 }
 
 .nav_left a {
-    display: flex;
-    align-items: center;
-    margin-left: 60%;
+  display: flex;
+  align-items: center;
+  margin-left: 60%;
 }
 
 .logo_img {
-    height: 44px;
-    width: auto;
-    object-fit: contain;
+  height: 44px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo_txt {
-    font-family: 'Telma', sans-serif;
-    font-size: 24px;
-    font-weight: 500;
-    color: #E3475D;
-    margin-left: 8px;
+  font-family: 'Telma', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #E3475D;
+  margin-left: 8px;
 }
 
 .nav_mid {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav_link {
-    font-size: 17px;
-    font-weight: 500;
-    color: #1E1E1E;
-    position: relative;
-    padding: 4px 0;
+  font-size: 17px;
+  font-weight: 500;
+  color: #1E1E1E;
+  position: relative;
+  padding: 4px 0;
 }
 
 .nav_link:hover,
 .nav_link.active {
-    color: #E3475D;
-    font-weight: 600;
+  color: #E3475D;
+  font-weight: 600;
 }
 
 .nav_right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-right: 7%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-right: 7%;
 }
 
 /* Gaya visual tombol pengalih bahasa antarmuka antara bahasa Indonesia dan Inggris. */
 .lang_switch {
-    display: flex;
-    align-items: center;
-    border: 1.5px solid #EAEAEA;
-    border-radius: 30px;
-    background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #EAEAEA;
+  border-radius: 30px;
+  background-color: #FFFFFF;
 }
 
 .lang_btn {
-    border: none;
-    background: transparent;
-    padding: 13px 18px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #1E1E1E;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  padding: 13px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1E1E1E;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .lang_btn:first-child {
-    border-radius: 20px 0 0 20px;
+  border-radius: 20px 0 0 20px;
 }
 
 .lang_btn:last-child {
-    border-radius: 0 20px 20px 0;
+  border-radius: 0 20px 20px 0;
 }
 
 .lang_btn.active {
-    background-color: #E3475D;
-    color: #FFFFFF;
-}
-
-/* .btn_cart {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #e03e52;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(224, 62, 82, 0.2);
-}
-
-.btn_cart:hover {
-  background-color: #c83244;
-  transform: translateY(-1px);
-} */
-
-.cart_icon {
-  font-size: 14px;
-  line-height: 1;
+  background-color: #E3475D;
+  color: #FFFFFF;
 }
 
 
@@ -209,12 +182,14 @@ img {
   flex: 1;
   padding-top: 110px;
   padding-bottom: 70px;
+  /* background-color: black; */
 }
 
 .cart_page_container {
-  width: 90%;
+  width: 76%;
   max-width: 1200px;
   margin: 0 auto;
+  /* background-color:blue; */
 }
 
 
@@ -225,6 +200,7 @@ img {
   padding-bottom: 24px;
   margin-bottom: 32px;
   border-bottom: 1px solid #e5e5e5;
+  /* background-color: purple; */
 }
 
 .cart_header_left {
@@ -248,6 +224,7 @@ img {
   line-height: 1.2;
 }
 
+
 .cart_header_right {
   display: flex;
   align-items: center;
@@ -264,8 +241,8 @@ img {
   color: #e03e52;
 }
 
+
 /* Tata letak dan gaya kartu informasi ketika keranjang belanja masih dalam kondisi kosong. */
-/* --- 1. Empty Cart State --- */
 .empty_cart_section {
   width: 100%;
 }
@@ -322,14 +299,14 @@ img {
   padding: 14px 34px;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 6px 18px rgba(224, 62, 82, 0.25);
   margin-bottom: 28px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .start_shopping_btn:hover {
   background-color: #c83244;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(224, 62, 82, 0.35);
+  box-shadow: 0 8px 22px rgba(252, 91, 109, 0.35);
 }
 
 .empty_trust_note {
@@ -347,7 +324,6 @@ img {
 }
 
 /* Tata letak kisi dua kolom untuk menampilkan daftar produk pesanan dan ringkasan transaksi. */
-/* --- 2. Populated Cart State --- */
 .populated_cart_section {
   width: 100%;
 }
@@ -357,10 +333,10 @@ img {
   grid-template-columns: 1.35fr 1fr;
   gap: 32px;
   align-items: flex-start;
+  /* background-color: black; */
 }
 
 /* Rangkaian gaya untuk kolom kiri yang menampilkan daftar kartu item belanjaan. */
-/* --- Left Column: Cart Items --- */
 .cart_items_column {
   display: flex;
   flex-direction: column;
@@ -383,10 +359,12 @@ img {
   gap: 20px;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* background-color: yellow; */
 }
 
 .cart_item_card:hover {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
 }
 
 .item_thumb {
@@ -498,7 +476,6 @@ img {
 }
 
 /* Tampilan formulir pengeditan catatan pesanan kustom secara langsung di dalam kartu produk. */
-/* Inline Note Edit Form */
 .note_edit_form {
   display: inline-flex;
   align-items: center;
@@ -881,82 +858,4 @@ img {
   font-size: 13px;
   color: #757575;
   font-weight: 400;
-}
-
-/* Aturan media query responsif untuk tata letak layar tablet di bawah 900 piksel. */
-/* --- Responsive Layout Breakpoints --- */
-@media (max-width: 900px) {
-  .nav_mid {
-    display: none;
-  }
-
-  .cart_split_layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .order_summary_column {
-    position: static;
-  }
-}
-
-/* Aturan media query responsif untuk penyesuaian tampilan perangkat ponsel di bawah 576 piksel. */
-@media (max-width: 576px) {
-  .navbar {
-    padding: 14px 5%;
-  }
-
-  .cart_page_wrapper {
-    padding-top: 96px;
-    padding-bottom: 48px;
-  }
-
-  .cart_header_bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-
-  .cart_main_title {
-    font-size: 26px;
-  }
-
-  .empty_cart_card {
-    padding: 40px 20px;
-    margin: 24px auto;
-  }
-
-  .empty_title {
-    font-size: 20px;
-  }
-
-  .cart_item_card {
-    flex-direction: column;
-    padding: 16px;
-    gap: 14px;
-  }
-
-  .item_thumb {
-    width: 100%;
-    height: 180px;
-  }
-
-  .item_top_row {
-    padding-right: 0;
-  }
-
-  .item_delete_btn {
-    top: 14px;
-    right: 14px;
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-
-  .order_summary_card {
-    padding: 24px 18px;
-  }
-
-  .summary_total_val {
-    font-size: 20px;
-  }
 }
